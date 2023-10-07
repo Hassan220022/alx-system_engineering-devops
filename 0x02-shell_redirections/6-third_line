@@ -7,4 +7,4 @@ do
     break
   fi
   ((count++))
-done < "iacta"
+done < "iacta" | head -n 3
