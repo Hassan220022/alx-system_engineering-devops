@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Read the file line by line and store the third line in a variable
 count=1
 while IFS= read -r line
 do
