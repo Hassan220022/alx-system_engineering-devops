@@ -1,10 +1,2 @@
 #!/bin/bash
-count=1
-while IFS= read -r line
-do
-  if [ $count -eq 3 ]; then
-    echo "$line"
-    break
-  fi
-  ((count++))
-done < "iacta" | head -n 3
+head -n 3 iacta | tail -n 1
