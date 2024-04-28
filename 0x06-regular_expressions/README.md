@@ -35,8 +35,6 @@ This project is part of the ALX Software Engineering curriculum's DevOps track. 
   ./0-simply_match_school.rb School | cat -e
   ```
 
-
-
 ### 1. Repetition Token #0
 
 **File**: `1-repetition_token_0.rb`
@@ -99,9 +97,9 @@ puts ARGV[0].scan(/127.0.0.[0-9]/).join
 - [Regular expressions - basics](https://www.slideshare.net/neha_jain/introducing-regular-expressions)
 - [Regular expressions - advanced](https://www.slideshare.net/neha_jain/advanced-regular-expressions-80296518)
 - [Rubular is your best friend](https://rubular.com)
-- [Learn Regular Expressions with simple, interactive exercises](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
+- [Use a regular expression against a problem: now you have 2 problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
+- [Learn Regular Expressions with simple, interactive exercises](https://regexone.com/)
 
 ---
 
 **Copyright © 2024 ALX, All rights reserved.**
-
