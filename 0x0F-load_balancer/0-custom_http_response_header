@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
-# a bash script that configures a brand new Ubuntu machine to the requirements asked in this task
+# Script to configure Nginx with a custom HTTP header on an Ubuntu machine
 
-sudo apt-get update && sudo apt-get dist-upgrade -y
-sudo apt-get -y install nginx
-sudo service nginx start
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
-sudo cp --backup=numbered /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-# tmp="error_page 404 /404.html;\nlocation = /404.html {\n\troot /usr/share/nginx/html;\n\tinternal;\n}"
-tmp="\terror_page 404 /404.html;\n\tlocation = /404.html {\n\troot /usr/share/nginx/html;\n\t\tinternal;\n}"
-sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;$tmp\n\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-# sudo sed -i "27i $tmp" /etc/nginx/sites-available/default
-sudo service nginx restart
+# Install Nginx if it's not already installed
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Get the server's hostname
+HOSTNAME=$(hostname)
+
+# Configure Nginx to add the custom header
+# The configuration will depend on your Nginx setup. This is an example:
+CUSTOM_HEADER="add_header X-Served-By $HOSTNAME;"
+
+# Use awk to add the custom header to the first server block in the default Nginx configuration
+sudo awk -v r="$CUSTOM_HEADER" '/server { print; print r; next }1' /etc/nginx/sites-available/default > temp && sudo mv temp /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+sudo systemctl restart nginx
+
+# Ensure that the service is running
+sudo systemctl is-enabled nginx
