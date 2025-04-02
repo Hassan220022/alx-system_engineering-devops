@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Fixes Nginx to listen on port 80
+
+# Check if nginx is installed, if not install it
+apt-get -y update
+apt-get -y install nginx
+
+# Remove the default symbolic link if it exists
+rm -f /etc/nginx/sites-enabled/default
+
+# Create a symbolic link to the default configuration
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restart Nginx service
+service nginx restart 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Short script to fix nginx port 80 issue
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
+pkill -o nginx 
