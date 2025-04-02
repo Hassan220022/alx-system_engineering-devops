@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script displays text indefinitely and handles SIGTERM
+
+# Function to handle SIGTERM
+terminator() {
+    echo "I am invincible!!!"
+}
+
+# Set up the trap
+trap terminator SIGTERM
+
+# Main loop
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done 

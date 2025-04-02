@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# This script creates a PID file and handles multiple signals
+
+# File to store PID
+pidfile="/var/run/myscript.pid"
+
+# Create the PID file
+echo $$ > "$pidfile"
+
+# Function to handle SIGTERM
+term_handler() {
+    echo "I hate the kill command"
+    rm -f "$pidfile"
+    exit
+}
+
+# Function to handle SIGINT
+int_handler() {
+    echo "Y U no love me?!"
+}
+
+# Function to handle SIGQUIT
+quit_handler() {
+    rm -f "$pidfile"
+    exit
+}
+
+# Set up signal traps
+trap term_handler SIGTERM
+trap int_handler SIGINT
+trap quit_handler SIGQUIT
+
+# Main loop
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done 
