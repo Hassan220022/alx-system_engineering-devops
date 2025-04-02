@@ -1,4 +1,6 @@
-# Executes a command to kill a specific process
-exec { 'killmenow':
-  command => 'pkill killmenow'
+# kill process killmenow
+
+exec { 'pkill':
+  command  => 'pkill killmenow',
+  provider => 'shell',
 } 
