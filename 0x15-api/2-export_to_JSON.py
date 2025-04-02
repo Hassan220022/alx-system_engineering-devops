@@ -50,10 +50,11 @@ if __name__ == "__main__":
 
         json_data = {str(employee_id): tasks_list}
 
-        # Export to JSON
+        # Export to JSON - ensure proper formatting
         json_filename = f"{employee_id}.json"
         with open(json_filename, 'w') as json_file:
             json.dump(json_data, json_file)
+            json_file.write("\n")  # Add newline at end of file
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")

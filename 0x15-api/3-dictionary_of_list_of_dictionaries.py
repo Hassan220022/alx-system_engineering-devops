@@ -44,10 +44,11 @@ if __name__ == "__main__":
             # Add user tasks to the main dictionary
             all_employees_tasks[str(user_id)] = user_tasks
 
-        # Export to JSON
+        # Export to JSON - ensure proper formatting
         json_filename = "todo_all_employees.json"
         with open(json_filename, 'w') as json_file:
             json.dump(all_employees_tasks, json_file)
+            json_file.write("\n")  # Add newline at end of file
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
