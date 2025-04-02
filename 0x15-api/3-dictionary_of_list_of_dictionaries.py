@@ -26,12 +26,12 @@ if __name__ == "__main__":
 
         # Prepare JSON data - all employee tasks
         all_employees_tasks = {}
-        
+
         for user in users_data:
             user_id = user.get("id")
             username = user.get("username")
             user_tasks = []
-            
+
             # Filter tasks for this user
             for task in todos_data:
                 if task.get("userId") == user_id:
@@ -40,7 +40,7 @@ if __name__ == "__main__":
                         "task": task.get("title"),
                         "completed": task.get("completed")
                     })
-            
+
             # Add user tasks to the main dictionary
             all_employees_tasks[str(user_id)] = user_tasks
 
@@ -57,4 +57,4 @@ if __name__ == "__main__":
         sys.exit(1)
     except IOError:
         print(f"Error writing to file {json_filename}")
-        sys.exit(1) 
+        sys.exit(1)

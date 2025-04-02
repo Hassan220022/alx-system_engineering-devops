@@ -63,4 +63,4 @@ if __name__ == "__main__":
         sys.exit(1)
     except IOError:
         print(f"Error writing to file {json_filename}")
-        sys.exit(1) 
+        sys.exit(1)

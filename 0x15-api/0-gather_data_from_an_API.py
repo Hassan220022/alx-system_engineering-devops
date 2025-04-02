@@ -22,7 +22,8 @@ if __name__ == "__main__":
     try:
         # Fetch user information
         user_response = requests.get(user_url)
-        user_response.raise_for_status()  # Raise an exception for bad status codes
+        # Raise an exception for bad status codes
+        user_response.raise_for_status()
         user_data = user_response.json()
         employee_name = user_data.get("name")
 
@@ -41,7 +42,8 @@ if __name__ == "__main__":
         number_of_done_tasks = len(done_tasks)
 
         # Print the results
-        print(f"Employee {employee_name} is done with tasks("f"{number_of_done_tasks}/{total_tasks}):")
+        print(f"Employee {employee_name} is done with tasks"
+              f"({number_of_done_tasks}/{total_tasks}):")
 
         for task in done_tasks:
             print(f"\t {task.get('title')}")
@@ -51,4 +53,4 @@ if __name__ == "__main__":
         sys.exit(1)
     except ValueError:
         print("Error processing JSON data")
-        sys.exit(1) 
+        sys.exit(1)
